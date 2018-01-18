@@ -39,3 +39,6 @@ ehthumbs.db
 Thumbs.db
 
 
+/XoticFete/XoticFete-ejb/target/
+/XoticFete/XoticFete-web/target/
+/XoticFete/XoticFete-ear/target/
