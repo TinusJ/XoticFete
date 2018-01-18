@@ -10,5 +10,6 @@
     <module>XoticFete-ear</module>
     <module>XoticFete-web</module>
     <module>XoticFete-ejb</module>
+    <module>XoticFete-entities</module>
   </modules>
 </project>
