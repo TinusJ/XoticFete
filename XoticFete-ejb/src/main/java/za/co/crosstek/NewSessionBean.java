@@ -18,7 +18,9 @@ public class NewSessionBean {
     public void businessMethod() {
     }
     
-    public void accessMethod(){}
+    public void accessMethod(){
+        //test comm.
+    }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
