@@ -5,12 +5,12 @@
     <parent>
         <artifactId>XoticFete</artifactId>
         <groupId>za.co.crosstek</groupId>
-        <version>1.0-DEV</version>
+        <version>1.0</version>
     </parent>
     
     <groupId>za.co.crosstek</groupId>
     <artifactId>XoticFete-entities</artifactId>
-    <version>1.0-DEV</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     
     <properties>

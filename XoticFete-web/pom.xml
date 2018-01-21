@@ -4,12 +4,12 @@
     <parent>
         <artifactId>XoticFete</artifactId>
         <groupId>za.co.crosstek</groupId>
-        <version>1.0-DEV</version>
+        <version>1.0</version>
     </parent>
 
     <groupId>za.co.crosstek</groupId>
     <artifactId>XoticFete-web</artifactId>
-    <version>1.0-DEV</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <name>XoticFete-web</name>
@@ -30,9 +30,17 @@
         <dependency>
             <groupId>za.co.crosstek</groupId>
             <artifactId>XoticFete-ejb</artifactId>
-            <version>1.0-DEV</version>
+            <version>1.0</version>
         </dependency>
+        
     
+        <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
