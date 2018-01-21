@@ -1,10 +1,10 @@
 package za.co.crosstek.jsf;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
 
-@Named
+@ManagedBean
 @SessionScoped
 public class GuestPreferences implements Serializable {
 

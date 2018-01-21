@@ -41,26 +41,7 @@
                             <p:menuitem id="apl_lorange" value="Orange" styleClass="orange-theme" icon="fa fa-paint-brush" actionListener="#{guestPreferences.updateTheme('orange', false)}" ajax="false" />
                             <p:menuitem id="apl_lpink" value="Pink" styleClass="pink-theme" icon="fa fa-paint-brush" actionListener="#{guestPreferences.updateTheme('pink', false)}" ajax="false" />
                         </p:submenu>
-                        <p:submenu id="apl_components" label="Components" icon="fa fa-sitemap">
-                            <p:menuitem id="apl_sample" value="Sample Page" icon="fa fa-columns" outcome="/sample" />
-                            <p:menuitem id="apl_forms" value="Forms" icon="fa fa-code" outcome="/forms" />
-                            <p:menuitem id="apl_data" value="Data" icon="fa fa-table" outcome="/data" />
-                            <p:menuitem id="apl_panels" value="Panels" icon="fa fa-list-alt" outcome="/panel" />
-                            <p:menuitem id="apl_overlays" value="Overlays" icon="fa fa-square" outcome="/overlay" />
-                            <p:menuitem id="apl_menucomponents" value="Menus" icon="fa fa-minus-square-o" outcome="/menu" />
-                            <p:menuitem id="apl_messages" value="Messages" icon="fa fa-circle-o-notch" outcome="/messages" />
-                            <p:menuitem id="apl_charts" value="Charts" icon="fa fa-area-chart" outcome="/charts" />
-                            <p:menuitem id="apl_file" value="File" icon="fa fa-arrow-circle-o-up" outcome="/file" />
-                            <p:menuitem id="apl_misc" value="Misc" icon="fa fa-user-secret" outcome="/misc" />
-                        </p:submenu>
-                        <p:submenu id="apl_default" label="Pages" icon="fa fa-life-saver">
-                            <p:menuitem id="apl_empty" value="Empty Page" icon="fa fa-square-o" outcome="/empty" />
-                            <p:menuitem id="apl_landing" value="Landing" icon="fa fa-certificate" outcome="/landing"/>
-                            <p:menuitem id="apl_login" value="Login Page" icon="fa fa-sign-in" outcome="/login" />
-                            <p:menuitem id="apl_error" value="Error Page" icon="fa fa-exclamation-circle" outcome="/error" />
-                            <p:menuitem id="apl_404" value="404 Page" icon="fa fa-times" outcome="/404" />
-                            <p:menuitem id="apl_access" value="Access Denied Page" icon="fa fa-exclamation-triangle" outcome="/access" />
-                        </p:submenu>
+                    
                         <p:submenu id="apl_hierarchy" label="Hierarchy" icon="fa fa-gg">
                             <p:submenu id="apl_sm1" label="Submenu 1" icon="fa fa-sign-in">
                                 <p:submenu id="apl_sm11" label="Submenu 1.1" icon="fa fa-sign-in">
@@ -83,7 +64,6 @@
                             </p:submenu>
                         </p:submenu>
 
-                        <p:menuitem id="apl_doc" value="Docs" icon="fa fa-book" outcome="/docs"/>
                         <p:menuitem id="apl_buy" value="Buy" icon="fa fa-credit-card" url="https://www.primefaces.org/store"/>
                     </pa:menu>
 

@@ -3,7 +3,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                template="/WEB-INF/template.xhtml">
+                template="/WEB-INF/templates/template.xhtml">
 
     <ui:define name="title">Dashboard</ui:define>
 
@@ -57,7 +57,7 @@
                 widget.jq.animate({value: generateRandomNumber()}, {
                     duration: 1000,
                     easing: 'linear',
-                    progress: function()
+                    progress: function ()
                     {
                         widget.setValue(Math.floor(this.value));
                     }
@@ -219,31 +219,7 @@
             </div>
             <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid contact-form">
                 <p:panel header="Message">
-                    <div class="ui-g">
-                        <div class="ui-g-12">
-                            <p:selectOneMenu id="console" value="#{selectOneMenuView.console}" autoWidth="false">
-                                <f:selectItem itemLabel="Select One" itemValue="" />
-                                <f:selectItem itemLabel="Sales" itemValue="Sales" />
-                                <f:selectItem itemLabel="Support" itemValue="Support" />
-                                <f:selectItem itemLabel="Finance" itemValue="Finance" />
-                            </p:selectOneMenu>
-                        </div>
-                        <div class="ui-g-12">
-                            <p:inputText placeholder="Name"/>
-                        </div>
-                        <div class="ui-g-12">
-                            <p:inputText placeholder="Email"/>
-                        </div>
-                        <div class="ui-g-12">
-                            <p:inputText placeholder="Location"/>
-                        </div>
-                        <div class="ui-g-12">
-                            <p:inputTextarea placeholder="Message" cols="5" autoResize="false"/>
-                        </div>
-                        <div class="ui-g-12">
-                            <p:commandButton type="button" value="Send" icon="fa fa-paper-plane-o"></p:commandButton>
-                        </div>
-                    </div>
+
                 </p:panel>
             </div>
             <div class="ui-g-12 ui-lg-4 contacts">
@@ -350,27 +326,7 @@
                 </p:panel>
 
                 <div class="sales-panel">
-                    <h:form>
-                        <p:dataTable var="car" value="#{dtBasicView.cars}"
-                            selectionMode="single" rowKey="#{car.id}" reflow="true" style="margin-bottom:20px">
-                            <f:facet name="header">Recent Sales</f:facet>
-                            <p:column headerText="Id" sortBy="#{car.id}">
-                                <h:outputText value="#{car.id}" />
-                            </p:column>
 
-                            <p:column headerText="Year" sortBy="#{car.year}">
-                                <h:outputText value="#{car.year}" />
-                            </p:column>
-
-                            <p:column headerText="Brand" sortBy="#{car.brand}">
-                                <h:outputText value="#{car.brand}" />
-                            </p:column>
-
-                            <p:column headerText="Color" sortBy="#{car.color}">
-                                <h:outputText value="#{car.color}" />
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
                 </div>
             </div>
 
@@ -445,9 +401,7 @@
             </div>
 
             <div class="ui-g-12 ui-md-6">
-                <p:panel header="Core 1 Data">
-                    <p:chart type="line" model="#{chartDemoView.lineModel1}" responsive="true"/>
-                </p:panel>
+
             </div>
             <div class="ui-g-12 ui-md-6">
                 <p:panel header="Disk Spaces" styleClass="disk-spaces">
@@ -481,48 +435,48 @@
                         </div>
 
                         <div class="user-detail">
-                           <ul>
-                             <li class="clearfix">
-                                 <i class="fa fa-tasks fa-fw"></i>
-                                 <span class="project-title">Tasks</span>
-                                 <span class="project-detail">3 open</span>
-                                 <div class="project-progressbar">
-                                     <div class="project-progressbar-value" style="width: 50%"></div>
-                                 </div>
-                             </li>
-                             <li class="clearfix">
-                                 <i class="fa fa-usd fa-fw"></i>
-                                 <span class="project-title">Revenue</span>
-                                 <span class="project-detail">+20%</span>
-                                 <div class="project-progressbar">
-                                     <div class="project-progressbar-value" style="width: 20%"></div>
-                                 </div>
-                             </li>
-                             <li class="clearfix">
-                                 <i class="fa fa-credit-card fa-fw"></i>
-                                 <span class="project-title">Payments</span>
-                                 <span class="project-detail">24 new</span>
-                                 <div class="project-progressbar">
-                                     <div class="project-progressbar-value" style="width: 65%"></div>
-                                 </div>
-                             </li>
-                             <li class="clearfix">
-                                 <i class="fa fa-users fa-fw"></i>
-                                 <span class="project-title">Clients</span>
-                                 <span class="project-detail">+80%</span>
-                                 <div class="project-progressbar">
-                                     <div class="project-progressbar-value" style="width: 80%"></div>
-                                 </div>
-                             </li>
-                             <li class="clearfix">
-                                 <i class="fa fa-users fa-fw"></i>
-                                 <span class="project-title">Turnover</span>
-                                 <span class="project-detail">+40%</span>
-                                 <div class="project-progressbar">
-                                     <div class="project-progressbar-value" style="width: 40%"></div>
-                                 </div>
-                             </li>
-                           </ul>
+                            <ul>
+                                <li class="clearfix">
+                                    <i class="fa fa-tasks fa-fw"></i>
+                                    <span class="project-title">Tasks</span>
+                                    <span class="project-detail">3 open</span>
+                                    <div class="project-progressbar">
+                                        <div class="project-progressbar-value" style="width: 50%"></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <i class="fa fa-usd fa-fw"></i>
+                                    <span class="project-title">Revenue</span>
+                                    <span class="project-detail">+20%</span>
+                                    <div class="project-progressbar">
+                                        <div class="project-progressbar-value" style="width: 20%"></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <i class="fa fa-credit-card fa-fw"></i>
+                                    <span class="project-title">Payments</span>
+                                    <span class="project-detail">24 new</span>
+                                    <div class="project-progressbar">
+                                        <div class="project-progressbar-value" style="width: 65%"></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <i class="fa fa-users fa-fw"></i>
+                                    <span class="project-title">Clients</span>
+                                    <span class="project-detail">+80%</span>
+                                    <div class="project-progressbar">
+                                        <div class="project-progressbar-value" style="width: 80%"></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <i class="fa fa-users fa-fw"></i>
+                                    <span class="project-title">Turnover</span>
+                                    <span class="project-detail">+40%</span>
+                                    <div class="project-progressbar">
+                                        <div class="project-progressbar-value" style="width: 40%"></div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -534,9 +488,7 @@
 
             </div>
             <div class="ui-g-12 ui-md-8">
-                <p:panel header="Scheduled Maintenances" style="height:100%">
-                    <p:schedule value="#{scheduleView.eventModel}"/>
-                </p:panel>
+
             </div>
         </div>
     </ui:define>
