@@ -9,7 +9,7 @@
 
     <groupId>za.co.crosstek</groupId>
     <artifactId>XoticFete-ear</artifactId>
-    <version>1.0</version>
+    <version>1.0-DEV</version>
     <packaging>ear</packaging>
 
     <name>XoticFete-ear</name>
@@ -44,13 +44,13 @@
         <dependency>
             <groupId>za.co.crosstek</groupId>
             <artifactId>XoticFete-ejb</artifactId>
-            <version>1.0</version>
+            <version>1.0-DEV</version>
             <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>za.co.crosstek</groupId>
             <artifactId>XoticFete-web</artifactId>
-            <version>1.0</version>
+            <version>1.0-DEV</version>
             <type>war</type>
         </dependency>
     </dependencies>
