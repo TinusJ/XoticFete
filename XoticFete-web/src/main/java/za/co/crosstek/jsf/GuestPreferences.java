@@ -1,10 +1,10 @@
 package za.co.crosstek.jsf;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class GuestPreferences implements Serializable {
 
@@ -12,7 +12,7 @@ public class GuestPreferences implements Serializable {
 
     private boolean dark = false;
 
-    private String layoutMode = "horizontal";
+    private String layoutMode = "static";
 
     public void updateTheme(String color, boolean dark) {
         this.color = color;
