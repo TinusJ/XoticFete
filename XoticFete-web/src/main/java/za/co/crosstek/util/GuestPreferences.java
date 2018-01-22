@@ -1,4 +1,4 @@
-package za.co.crosstek.jsf;
+package za.co.crosstek.util;
 
 import java.io.Serializable;
 import javax.inject.Named;

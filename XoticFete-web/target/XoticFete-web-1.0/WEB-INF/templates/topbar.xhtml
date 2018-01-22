@@ -19,18 +19,6 @@
             <i class="fa fa-angle-down"></i>
         </a>
         
-        <span class="topbar-search">
-            <input type="text" placeholder="Search"/>
-            <span class="fa fa-search"></span>
-        </span>
-        
-        <span class="topbar-themeswitcher">
-            <h:form>
-                <p:inputSwitch value="#{guestPreferences.dark}">
-                    <p:ajax listener="#{guestPreferences.changeScheme}" oncomplete="setTimeout(function() {document.forms[0].submit()}, 500)" />
-                </p:inputSwitch>
-            </h:form>
-        </span>
 
         <ul class="topbar-menu fadeInDown">
             <li>
@@ -171,12 +159,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="topbar-search-item">
-                <span class="topbar-search">
-                    <input type="text" placeholder="Search"/>
-                    <span class="fa fa-search"></span>
-                </span>
-            </li>
+       
         </ul>
     </div>
 
