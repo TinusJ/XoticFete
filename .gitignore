@@ -46,3 +46,7 @@ Thumbs.db
 /XoticFete-ejb/target/
 /XoticFete-web/target/
 /XoticFete-ear/target/
+
+nb-configuration.xml
+nbactions.xml
+rebel.xml
