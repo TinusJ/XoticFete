@@ -25,28 +25,45 @@
                         Sign in to start your session
                     </p>
                 </div>
-                <div class="ui-g-12 ui-lg-6 right-side">
-                    <div class="login-wrapper">
-                        <div class="login-container">
-                            <span class="title">Login</span>
 
-                            <div class="ui-g ui-fluid">
-                                <div class="ui-g-12">
-                                    <p:inputText placeholder="Username" autocomplete="off" />
-                                </div>
-                                <div class="ui-g-12">
-                                    <p:password placeholder="Password" autocomplete="off" feedback="false"/>
-                                </div>
-                                <div class="ui-g-6">
-                                    <p:button outcome="dashboard" value="Login" icon="fa fa-check" />
-                                </div>
-                                <div class="ui-g-6 password-container">
-                                    <p:link>Forgot Password?</p:link>
-                                </div>
+                <h:form >
+                    <p:growl autoUpdate="true" id="growl"/>
+                    <div class="ui-g-12 ui-lg-6 right-side">
+                        <div class="login-wrapper">
+                            <div class="login-container">
+                                <span class="title">Login</span>
+
+                                <form method="post">
+                                    <label for="username">Username:</label>
+                                    <input type="text" id="username" name="username" />
+                                    <br/>
+                                    <label for="password">Password:</label>
+                                    <input type="password" id="password" name="password" />
+                                    <br/>
+                                    <label for="rememberMe">Remember me:</label>
+                                    <input type="checkbox" id="rememberMe" name="rememberMe" value="true" />
+                                    <br/>
+                                    <input type="submit" value="Login" />
+                                    <span class="error">#{shiroLoginFailure}</span>
+                                </form>
+                                <!--                                <div class="ui-g ui-fluid">
+                                                                    <div class="ui-g-12">
+                                                                        <p:inputText placeholder="Username" autocomplete="off"   id="username" value="username"/>
+                                                                    </div>
+                                                                    <div class="ui-g-12">
+                                                                        <p:password placeholder="Password" autocomplete="off" feedback="false"  id="password" value="password"/>
+                                                                    </div>
+                                                                    <div class="ui-g-6">
+                                                                        <p:commandButton type="submit" value="Login" icon="fa fa-check" update=":growl" />
+                                                                    </div>
+                                                                    <div class="ui-g-6 password-container">
+                                                                        <p:link>Forgot Password?</p:link>
+                                                                    </div>
+                                                                </div>-->
                             </div>
                         </div>
                     </div>
-                </div>
+                </h:form>
             </div>
         </div>
 
