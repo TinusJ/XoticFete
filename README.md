@@ -1,3 +1,3 @@
 # XoticFete
-
-test
+https://travis-ci.org/TinusJ/XoticFete.svg?branch=master
+test 
