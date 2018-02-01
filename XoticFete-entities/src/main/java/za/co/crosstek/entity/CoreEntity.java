@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  * @author Tinus
  */
 @MappedSuperclass
-public abstract class CoreEnity implements Serializable {
+public abstract class CoreEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -66,10 +66,10 @@ public abstract class CoreEnity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CoreEnity)) {
+        if (!(object instanceof CoreEntity)) {
             return false;
         }
-        CoreEnity other = (CoreEnity) object;
+        CoreEntity other = (CoreEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

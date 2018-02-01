@@ -3,12 +3,8 @@
   <persistence-unit name="XoticPU" transaction-type="JTA">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:/Xotic</jta-data-source>
-    <jar-file>lib/XoticFete-entities-1.0.jar</jar-file>
-    <class>za.co.crosstek.entity.CoreEnity</class>
-    <class>za.co.crosstek.entity.Company</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
-      <property name="hibernate.hbm2ddl.auto" value="create-tables"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
