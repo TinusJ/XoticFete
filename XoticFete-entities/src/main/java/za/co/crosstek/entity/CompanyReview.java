@@ -6,13 +6,13 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class EventReview extends CoreEntity {
+public class CompanyReview extends CoreEntity {
 
     protected static final long serialVersionUID = 1L;
 
     @ManyToOne
     @NotNull
-    private Event event;
+    private Company company;
 
     @Column(nullable = false)
     @NotNull
@@ -27,12 +27,12 @@ public class EventReview extends CoreEntity {
     @NotNull
     private MobileUser mobileUser;
 
-    public Event getEvent() {
-        return event;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public String getTitle() {
@@ -69,6 +69,6 @@ public class EventReview extends CoreEntity {
 
     @Override
     public String toString() {
-        return event.toString() + " " + title;
+        return company.toString() + " " + title;
     }
 }

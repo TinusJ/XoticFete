@@ -1,8 +1,10 @@
 package za.co.crosstek.entity;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.AssertTrue;
 import org.apache.commons.lang3.StringUtils;
 
@@ -21,8 +23,17 @@ public class MobileUser extends CoreEntity {
 
     private Boolean unsubscribed;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private GeoLocation location;
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<GeoLocation> lastKnowLocations;
+
+    @OneToMany(mappedBy = "mobileUser", cascade = CascadeType.REFRESH)
+    private List<FavoriteEvent> favEvents;
+
+    @OneToMany(mappedBy = "mobileUser", cascade = CascadeType.REFRESH)
+    private List<FavoriteSpecial> favSpecials;
+
+    @OneToMany(mappedBy = "mobileUser", cascade = CascadeType.REFRESH)
+    private List<FavoriteCompany> favCompanies;
 
     public String getEmail() {
         return email;
@@ -56,12 +67,12 @@ public class MobileUser extends CoreEntity {
         this.unsubscribed = unsubscribed;
     }
 
-    public GeoLocation getLocation() {
-        return location;
+    public List<GeoLocation> getLastKnowLocations() {
+        return lastKnowLocations;
     }
 
-    public void setLocation(GeoLocation location) {
-        this.location = location;
+    public void setLastKnowLocations(List<GeoLocation> lastKnowLocations) {
+        this.lastKnowLocations = lastKnowLocations;
     }
 
     public String getFirstName() {
@@ -78,6 +89,30 @@ public class MobileUser extends CoreEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<FavoriteEvent> getFavEvents() {
+        return favEvents;
+    }
+
+    public void setFavEvents(List<FavoriteEvent> favEvents) {
+        this.favEvents = favEvents;
+    }
+
+    public List<FavoriteSpecial> getFavSpecials() {
+        return favSpecials;
+    }
+
+    public void setFavSpecials(List<FavoriteSpecial> favSpecials) {
+        this.favSpecials = favSpecials;
+    }
+
+    public List<FavoriteCompany> getFavCompanies() {
+        return favCompanies;
+    }
+
+    public void setFavCompanies(List<FavoriteCompany> favCompanies) {
+        this.favCompanies = favCompanies;
     }
 
     //</editor-fold>

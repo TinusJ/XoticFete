@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -16,7 +17,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import za.co.crosstek.enums.EventTag;
-import za.co.crosstek.entity.EventReview;
 
 @Entity
 public class Event extends CoreEntity {
@@ -34,9 +34,6 @@ public class Event extends CoreEntity {
     @Column(name = "eventtag")
     private List<EventTag> eventTags;
 
-    @OneToOne
-    private Attachment image;
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
 
@@ -46,8 +43,14 @@ public class Event extends CoreEntity {
     @Column(nullable = false)
     private Double entranceFee;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Attachment attachment;
+
     @OneToMany(mappedBy = "event", cascade = CascadeType.REFRESH)
     private List<EventReview> eventReviews;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.REFRESH)
+    private List<FavoriteEvent> eventFavorites;
 
     @Transient
     private Integer viewed;
@@ -77,14 +80,6 @@ public class Event extends CoreEntity {
 
     public void setEventTags(List<EventTag> eventTags) {
         this.eventTags = eventTags;
-    }
-
-    public Attachment getImage() {
-        return image;
-    }
-
-    public void setImage(Attachment image) {
-        this.image = image;
     }
 
     public Date getStartDate() {
@@ -133,6 +128,22 @@ public class Event extends CoreEntity {
 
     public void setLaunched(Boolean launched) {
         this.launched = launched;
+    }
+
+    public List<FavoriteEvent> getEventFavorites() {
+        return eventFavorites;
+    }
+
+    public void setEventFavorites(List<FavoriteEvent> eventFavorites) {
+        this.eventFavorites = eventFavorites;
+    }
+
+    public Attachment getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(Attachment attachment) {
+        this.attachment = attachment;
     }
 
     @Override

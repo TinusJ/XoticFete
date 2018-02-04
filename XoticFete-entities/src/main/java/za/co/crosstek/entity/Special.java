@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -31,9 +32,6 @@ public class Special extends CoreEntity {
     @Column(nullable = false)
     private Double price;
 
-    @OneToOne
-    private Attachment image;
-
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = SpecialTag.class)
     @CollectionTable(name = "special_tags")
@@ -48,6 +46,12 @@ public class Special extends CoreEntity {
 
     @OneToMany(mappedBy = "special", cascade = CascadeType.REFRESH)
     private List<SpecialReview> specialReviews;
+
+    @OneToMany(mappedBy = "special", cascade = CascadeType.REFRESH)
+    private List<FavoriteSpecial> specialFavorites;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Attachment attachment;
 
     @Transient
     private Integer viewed;
@@ -79,12 +83,12 @@ public class Special extends CoreEntity {
         this.price = price;
     }
 
-    public Attachment getImage() {
-        return image;
+    public Attachment getAttachment() {
+        return attachment;
     }
 
-    public void setImage(Attachment image) {
-        this.image = image;
+    public void setAttachment(Attachment attachment) {
+        this.attachment = attachment;
     }
 
     public List<SpecialTag> getSpecialTags() {
@@ -133,6 +137,14 @@ public class Special extends CoreEntity {
 
     public void setLaunched(Boolean launched) {
         this.launched = launched;
+    }
+
+    public List<FavoriteSpecial> getSpecialFavorites() {
+        return specialFavorites;
+    }
+
+    public void setSpecialFavorites(List<FavoriteSpecial> specialFavorites) {
+        this.specialFavorites = specialFavorites;
     }
 
     @Override

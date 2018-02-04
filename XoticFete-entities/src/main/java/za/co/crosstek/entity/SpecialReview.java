@@ -14,6 +14,10 @@ public class SpecialReview extends CoreEntity {
     @NotNull
     private Special special;
 
+    @ManyToOne
+    @NotNull
+    private MobileUser mobileUser;
+
     @NotNull
     @Column(nullable = false)
     private String title;
@@ -53,6 +57,14 @@ public class SpecialReview extends CoreEntity {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public MobileUser getMobileUser() {
+        return mobileUser;
+    }
+
+    public void setMobileUser(MobileUser mobileUser) {
+        this.mobileUser = mobileUser;
     }
 
     @Override
