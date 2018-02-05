@@ -38,15 +38,8 @@
 ehthumbs.db
 Thumbs.db
 
+*/target/*
 
-/XoticFete/XoticFete-ejb/target/
-/XoticFete/XoticFete-web/target/
-/XoticFete/XoticFete-ear/target/
-/XoticFete-entities/target/
-/XoticFete-ejb/target/
-/XoticFete-web/target/
-/XoticFete-ear/target/
-
-nb-configuration.xml
-nbactions.xml
-rebel.xml
+*/nb-configuration.xml
+*/nbactions.xml
+*/rebel.xml
