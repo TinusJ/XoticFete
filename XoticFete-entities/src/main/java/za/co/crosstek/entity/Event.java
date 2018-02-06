@@ -16,9 +16,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import za.co.crosstek.anot.CoreAttribute;
+import za.co.crosstek.anot.EntityAnotation;
 import za.co.crosstek.enums.EventTag;
 
 @Entity
+@EntityAnotation(attributes = {CoreAttribute.SHOW_ON_MENU, CoreAttribute.REST}, label = "Event", icon = "fa fa-calendar")
 public class Event extends CoreEntity {
 
     @NotNull

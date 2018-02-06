@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import za.co.crosstek.anot.CoreAttribute;
+import za.co.crosstek.anot.EntityAnotation;
 
 /**
  *

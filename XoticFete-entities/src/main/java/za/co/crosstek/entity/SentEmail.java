@@ -7,12 +7,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "SentEmail.findToSend",
+            query = "SELECT en FROM SentEmail en "
+            + "WHERE (en.sent IS NULL OR en.sent = false) "
+            + "AND (en.retrycount IS NULL OR en.retrycount < 2)")
+})
 public class SentEmail extends CoreEntity {
 
     @ManyToOne
@@ -31,6 +40,7 @@ public class SentEmail extends CoreEntity {
     private Integer retrycount;
 
     @NotNull
+    @Column(nullable = false)
     private String subject;
 
     @OneToMany
@@ -170,6 +180,6 @@ public class SentEmail extends CoreEntity {
 
     @Override
     public String toString() {
-        return "SentEmail";
+        return subject;
     }
 }

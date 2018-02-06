@@ -11,9 +11,7 @@
             <div class="nano-content menu-scroll-content">
                 <div class="layout-menu-title">MENU</div>
                 <h:form id="menuform">
-                    <pa:menu>
-                        <p:menuitem id="apl_dashboard" value="Dashboard" icon="fa fa-dashboard" outcome="/dashboard"/>
-                    </pa:menu>
+                    <pa:menu model="#{menuRenderBean.menuModel}"/>
                 </h:form>
             </div>
         </div>
