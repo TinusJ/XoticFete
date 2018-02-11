@@ -24,21 +24,26 @@ public class MenuRenderBean implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(MenuRenderBean.class);
 
     @EJB
-    private DynamicFacade dynamicFacade;
+    private CoreReflector coreReflector;
 
     private MenuModel menuModel;
 
     @PostConstruct
     public void init() {
         menuModel = new DefaultMenuModel();
-        Set<Class<?>> menuClasses = dynamicFacade.getMenuItems();
+        Set<Class<?>> menuClasses = coreReflector.getMenuItems();
+
+        DefaultMenuItem dashboardItem = new DefaultMenuItem("Dashboard");
+        dashboardItem.setIcon("fa fa-home");
+        dashboardItem.setUrl("/dashboard");
+        menuModel.addElement(dashboardItem);
 
         if (menuClasses != null && !menuClasses.isEmpty()) {
 
-            menuClasses.forEach((c) -> {
+            menuClasses.stream().forEachOrdered((c) -> {
                 DefaultMenuItem item = new DefaultMenuItem(c.getAnnotation(EntityAnotation.class).label());
                 item.setIcon(c.getAnnotation(EntityAnotation.class).icon());
-                item.setUrl("/list?" + c.getAnnotation(EntityAnotation.class).label().toLowerCase());
+                item.setUrl("/components/list?e=" + c.getSimpleName());
                 item.setTitle(c.getAnnotation(EntityAnotation.class).description());
                 menuModel.addElement(item);
             });

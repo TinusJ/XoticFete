@@ -1,10 +1,10 @@
-package za.co.crosstek.anot;
+package za.co.crosstek.enums;
 
 /**
  *
  * @author Tinus
  */
-public enum CoreAttribute {
+public enum EntityAttribute {
 
     /**
      * Rest Enabled

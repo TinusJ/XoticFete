@@ -16,12 +16,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import za.co.crosstek.anot.CoreAttribute;
+import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.anot.EntityAnotation;
 import za.co.crosstek.enums.SpecialTag;
 
 @Entity
-@EntityAnotation(attributes = {CoreAttribute.SHOW_ON_MENU, CoreAttribute.REST}, label = "Special", icon = "fa fa-star")
+@EntityAnotation(attributes = {EntityAttribute.SHOW_ON_MENU, EntityAttribute.REST}, label = "Special", icon = "fa fa-star")
 public class Special extends CoreEntity {
 
     @NotNull

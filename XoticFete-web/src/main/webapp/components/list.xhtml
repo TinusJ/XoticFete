@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/template.xhtml">
+
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="e" value="#{listBean.e}" required="true"/>
+        </f:metadata>
+        #{listBean.init()}
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <div class="card">
+                    <h1>List View #{listBean.e}"</h1>
+                    <h2>List View #{listBean.c.simpleName}"</h2>
+
+                    <p:dataTable id="lst" var="lst" value="#{listBean.list}" widgetVar="lstTable" filteredValue="#{listBean.filteredList}">                    
+                        <p:columns value="#{listBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{lst[column.property]}" filterBy="#{lst[column.property]}">
+                            <f:facet name="header">
+                                <h:outputText value="#{column.header}" />
+                            </f:facet>
+                            <h:outputText value="#{lst[column.property]}" />
+                        </p:columns>
+                    </p:dataTable>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

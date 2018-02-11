@@ -16,19 +16,22 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import za.co.crosstek.anot.CoreAttribute;
+import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
 import za.co.crosstek.enums.EventTag;
 
 @Entity
-@EntityAnotation(attributes = {CoreAttribute.SHOW_ON_MENU, CoreAttribute.REST}, label = "Event", icon = "fa fa-calendar")
+@EntityAnotation(attributes = {EntityAttribute.SHOW_ON_MENU, EntityAttribute.REST}, label = "Event", icon = "fa fa-calendar")
 public class Event extends CoreEntity {
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Event Name")
     private String eventName;
 
     @Column(length = Short.MAX_VALUE)
+    @FieldAnotation(label = "Description")
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -38,12 +41,15 @@ public class Event extends CoreEntity {
     private List<EventTag> eventTags;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @FieldAnotation(label = "Start Date")
     private Date startDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @FieldAnotation(label = "End Date")
     private Date endDate;
 
     @Column(nullable = false)
+    @FieldAnotation(label = "Entrance Fee")
     private Double entranceFee;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -56,6 +62,7 @@ public class Event extends CoreEntity {
     private List<FavoriteEvent> eventFavorites;
 
     @Transient
+    @FieldAnotation(label = "Views")
     private Integer viewed;
 
     @Transient

@@ -4,14 +4,23 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import za.co.crosstek.entity.CoreEntity;
 
 /**
  *
  * @author Tinus
  */
-public abstract class AbstractFacade<T> {
+public abstract class AbstractFacade<T extends CoreEntity> {
+
+    protected static final Logger LOG = LoggerFactory.getLogger(AbstractFacade.class);
 
     private Class<T> entityClass;
+
+    public AbstractFacade() {
+
+    }
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;

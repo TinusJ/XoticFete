@@ -8,6 +8,7 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -71,58 +72,56 @@ public class JsfUtil {
         return items;
     }
 
-    /**
-     *
-     * Adds error message to page.
-     *
-     * @param ex
-     * @param defaultMsg
-     */
-    public static void addErrorMessage(Exception ex, String defaultMsg) {
-        String msg = ex.getLocalizedMessage();
-        if (msg != null && msg.length() > 0) {
-            addErrorMessage(msg);
-        } else {
-            addErrorMessage(defaultMsg);
+    public static void addWarningMessage(String title, String msg) {
+
+        if (StringUtils.isEmpty(title)) {
+            title = "Warning";
+        }
+
+        addMessage(FacesMessage.SEVERITY_WARN, title, msg);
+    }
+
+    public static void addErrorMessage(String title, String msg) {
+
+        if (StringUtils.isEmpty(title)) {
+            title = "Error";
+        }
+
+        addMessage(FacesMessage.SEVERITY_ERROR, title, msg);
+
+        if (getFacesContext() != null) {
+            getFacesContext().validationFailed();                                             // Invalidate JSF page if we raise an error message
         }
     }
 
-    /**
-     *
-     * Adds list of error messages to page.
-     *
-     * @param messages
-     */
-    public static void addErrorMessages(List<String> messages) {
-        for (String message : messages) {
-            addErrorMessage(message);
+    public static void addSuccessMessage(String title, String msg) {
+
+        if (StringUtils.isEmpty(title)) {
+            title = "Success";
         }
+
+        addMessage(FacesMessage.SEVERITY_INFO, title, msg);
     }
 
-    /**
-     *
-     * Adds error message to page.
-     *
-     * @param msg
-     */
-    public static void addErrorMessage(String msg) {
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, msg);
-        FacesContext.getCurrentInstance().addMessage(null, facesMsg);
+    public static void addInfoMessage(String title, String msg) {
+
+        if (StringUtils.isEmpty(title)) {
+            title = "Info";
+        }
+
+        addMessage(FacesMessage.SEVERITY_INFO, title, msg);
     }
 
-    /**
-     *
-     * Adds sucesses message to page
-     *
-     * @param msg
-     */
-    public static void addSuccessMessage(String msg) {
-        FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg);
-        FacesContext.getCurrentInstance().addMessage("successInfo", facesMsg);
+    private static void addMessage(FacesMessage.Severity severity, String title, String message) {
+        FacesMessage facesMsg = new FacesMessage(severity, title, message);
+
+        if (getFacesContext() != null) {
+            getFacesContext().addMessage(null, facesMsg);
+        }
     }
 
     public static HttpServletRequest getRequest() {
-        return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        return (HttpServletRequest) getFacesContext().getExternalContext().getRequest();
     }
 
     public static String getRequestURI() {

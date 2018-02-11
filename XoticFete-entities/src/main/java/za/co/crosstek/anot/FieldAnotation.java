@@ -1,50 +1,44 @@
 package za.co.crosstek.anot;
 
-import za.co.crosstek.enums.EntityAttribute;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import za.co.crosstek.enums.FieldExclusion;
 
 /**
  *
  * @author Tinus
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface EntityAnotation {
+@Target(ElementType.FIELD)
+public @interface FieldAnotation {
 
     /**
-     * Label of the Entity
+     * This will be the label for the field
      *
-     * @used Menu Item Name,
      * @return
      */
     String label() default "No Label";
 
     /**
-     * Description of the Entity
+     * This will be the description / title for the field
      *
-     * @used Title of the menu Item,
      * @return
      */
     String description() default "No Description";
 
     /**
-     * Icon of the Entity
+     * Rank order
      *
-     * @used Icon of the Menu Item,
-     * @return
-     */
-    String icon() default "No Icon";
-
-    /**
-     * Rank of the Entity
-     *
-     * @used Sublist Order, Menu Rank Order
      * @return
      */
     int rank() default 0;
 
-    EntityAttribute[] attributes() default {};
+    /**
+     * This will list all exclusion where field should not be shown
+     *
+     * @return
+     */
+    FieldExclusion[] exclusions() default {};
 }
