@@ -9,14 +9,13 @@
     <ui:define name="content">
         <f:metadata>
             <f:viewParam name="e" value="#{listBean.e}" required="true"/>
+            <f:viewAction action="#{listBean.init}" />
         </f:metadata>
-        #{listBean.init()}
 
         <div class="ui-g">
             <div class="ui-g-12">
                 <div class="card">
-                    <h1>List View #{listBean.e}"</h1>
-                    <h2>List View #{listBean.c.simpleName}"</h2>
+                    <h1 class="panelGridCenter">#{listBean.e} List</h1>
 
                     <p:dataTable id="lst" var="lst" value="#{listBean.list}" widgetVar="lstTable" filteredValue="#{listBean.filteredList}">                    
                         <p:columns value="#{listBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{lst[column.property]}" filterBy="#{lst[column.property]}">

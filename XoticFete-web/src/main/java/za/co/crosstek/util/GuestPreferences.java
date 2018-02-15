@@ -1,8 +1,8 @@
 package za.co.crosstek.util;
 
 import java.io.Serializable;
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 @Named
 @SessionScoped

@@ -4,8 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.enums.EntityAttribute;
 
 @Entity
 @EntityAnotation(attributes = {EntityAttribute.REST}, label = "Special Review", icon = "fa fa-rating")

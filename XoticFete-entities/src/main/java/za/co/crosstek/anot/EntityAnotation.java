@@ -1,10 +1,10 @@
 package za.co.crosstek.anot;
 
-import za.co.crosstek.enums.EntityAttribute;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import za.co.crosstek.enums.EntityAttribute;
 
 /**
  *
@@ -47,4 +47,11 @@ public @interface EntityAnotation {
     int rank() default 0;
 
     EntityAttribute[] attributes() default {};
+
+    /**
+     * This will contain the custom urls for -Form -List -View
+     *
+     * @return
+     */
+    UrlAnotation url() default @UrlAnotation;
 }

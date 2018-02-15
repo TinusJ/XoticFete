@@ -16,8 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.enums.SpecialTag;
 
 @Entity

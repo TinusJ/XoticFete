@@ -38,6 +38,7 @@ public class ListBean implements Serializable {
 
             try {
                 c = Class.forName(coreReflector.getEntityPackage() + "." + e);
+                listRenderer.setClazz(c);
             } catch (Exception e) {
                 LOG.error("Could not find class ", e);
             }
@@ -46,11 +47,22 @@ public class ListBean implements Serializable {
     }
 
     public Class<?> getC() {
+
+        if (c == null && e != null) {
+            try {
+                c = Class.forName(coreReflector.getEntityPackage() + "." + e);
+            } catch (Exception e) {
+                LOG.error("Could not find class ", e);
+            }
+        }
         return c;
     }
 
     public void setC(Class<?> c) {
-        this.c = c;
+
+        if (c != null) {
+            this.c = c;
+        }
     }
 
     public String getE() {
@@ -66,10 +78,8 @@ public class ListBean implements Serializable {
         if (list == null) {
 
             if (c != null) {
-                listRenderer.setClazz(c);
+                list = listRenderer.getList();
             }
-
-            list = listRenderer.getList();
         }
 
         return list;
@@ -81,7 +91,7 @@ public class ListBean implements Serializable {
 
     public List<ColumnModel> getColumns() {
 
-        if (columns == null) {
+        if (c != null && columns == null) {
             columns = listRenderer.buildColumns();
         }
         return columns;

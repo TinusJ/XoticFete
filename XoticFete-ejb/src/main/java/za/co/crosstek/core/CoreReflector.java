@@ -11,9 +11,9 @@ import org.apache.commons.lang3.reflect.FieldUtils;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.anot.EntityAnotation;
 import za.co.crosstek.anot.FieldAnotation;
+import za.co.crosstek.enums.EntityAttribute;
 import za.co.crosstek.enums.FieldExclusion;
 
 /**
@@ -72,19 +72,22 @@ public class CoreReflector {
         Set<Field> fieldSet = new HashSet<>();
 
         try {
-            List<Field> fieldList = FieldUtils.getFieldsListWithAnnotation(clazz, FieldAnotation.class);
+            
+            if (clazz != null) {
 
-            if (fieldList != null) {
+                List<Field> fieldList = FieldUtils.getFieldsListWithAnnotation(clazz, FieldAnotation.class);
 
-                for (Field field : fieldList) {
-                    FieldAnotation anot = field.getAnnotation(FieldAnotation.class);
+                if (fieldList != null) {
 
-                    if (!Arrays.asList(anot.exclusions()).contains(exclusion)) {
-                        fieldSet.add(field);
+                    for (Field field : fieldList) {
+                        FieldAnotation anot = field.getAnnotation(FieldAnotation.class);
+
+                        if (!Arrays.asList(anot.exclusions()).contains(exclusion)) {
+                            fieldSet.add(field);
+                        }
                     }
                 }
             }
-
         } catch (Exception e) {
             LOG.error("Could not get the fields", e);
         }
