@@ -66,7 +66,7 @@ public class ListRenderer {
         try {
 
             if (clazz != null) {
-                ret = genericFacade.findAbstractFacadeFor(clazz.getSimpleName() + "Facade").findAll();
+                ret = genericFacade.findFacade(clazz.getSimpleName() + "Facade").findAll();
             }
         } catch (Exception e) {
             LOG.error("Could not build list for clazz", e);

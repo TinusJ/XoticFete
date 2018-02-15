@@ -32,7 +32,7 @@ public class GenericFacade extends AbstractFacade<CoreEntity> {
         super(entityClass);
     }
 
-    public AbstractFacade findAbstractFacadeFor(String facadeClassName) {
+    public AbstractFacade findFacade(String facadeClassName) {
         AbstractFacade ejbFacade = null;
 
         if (StringUtils.isNotBlank(facadeClassName)) {
