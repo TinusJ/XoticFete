@@ -8,16 +8,17 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Enumerated; 
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
 import za.co.crosstek.enums.EntityAttribute;
+import za.co.crosstek.enums.FieldType;
 import za.co.crosstek.enums.SpecialTag;
 
 @Entity
@@ -26,41 +27,44 @@ public class Special extends CoreEntity {
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Special Name")
     private String name;
 
     @Column(length = Short.MAX_VALUE)
+    @FieldAnotation(label = "Description")
     private String description;
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Price")
     private Double price;
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = SpecialTag.class)
     @CollectionTable(name = "special_tags")
     @Column(name = "specialtag")
+    @FieldAnotation(label = "Special Tags")
     private List<SpecialTag> specialTags;
 
     @Temporal(TemporalType.TIME)
+    @FieldAnotation(label = "Start Time")
     private Date specialStartTime;
 
     @Temporal(TemporalType.TIME)
+    @FieldAnotation(label = "End Time")
     private Date specialEndTime;
 
     @OneToMany(mappedBy = "special", cascade = CascadeType.REFRESH)
+    @FieldAnotation(label = "Reviews")
     private List<SpecialReview> specialReviews;
 
     @OneToMany(mappedBy = "special", cascade = CascadeType.REFRESH)
+    @FieldAnotation(label = "Favorites")
     private List<FavoriteSpecial> specialFavorites;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @FieldAnotation(label = "Attachment", type = FieldType.ATTACHMENT)
     private Attachment attachment;
-
-    @Transient
-    private Integer viewed;
-
-    @Transient
-    private Boolean launched;
 
     public String getName() {
         return name;
@@ -124,22 +128,6 @@ public class Special extends CoreEntity {
 
     public void setSpecialReviews(List<SpecialReview> specialReviews) {
         this.specialReviews = specialReviews;
-    }
-
-    public Integer getViewed() {
-        return viewed;
-    }
-
-    public void setViewed(Integer viewed) {
-        this.viewed = viewed;
-    }
-
-    public Boolean getLaunched() {
-        return launched;
-    }
-
-    public void setLaunched(Boolean launched) {
-        this.launched = launched;
     }
 
     public List<FavoriteSpecial> getSpecialFavorites() {

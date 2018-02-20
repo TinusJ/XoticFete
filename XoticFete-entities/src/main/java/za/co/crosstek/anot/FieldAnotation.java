@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import za.co.crosstek.enums.FieldExclusion;
+import za.co.crosstek.enums.FieldType;
 
 /**
  *
@@ -41,4 +42,11 @@ public @interface FieldAnotation {
      * @return
      */
     FieldExclusion[] exclusions() default {};
+
+    /**
+     * This will determine what to render on screen
+     *
+     * @return
+     */
+    FieldType type() default FieldType.AUTO;
 }

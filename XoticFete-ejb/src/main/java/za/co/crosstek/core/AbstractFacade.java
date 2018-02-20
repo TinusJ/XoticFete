@@ -47,7 +47,7 @@ public abstract class AbstractFacade<T extends CoreEntity> {
     public List<T> findAll() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return getEntityManager().createQuery(cq).getResultList();
+        return getEntityManager().createQuery(cq).setHint("javax.persistence.cache.retrieveMode", "BYPASS").getResultList();
     }
 
     public List<T> findRange(int[] range) {

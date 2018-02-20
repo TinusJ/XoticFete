@@ -33,6 +33,12 @@
             <version>1.0</version>
         </dependency>
     
+        <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/sql-maven-plugin -->
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sql-maven-plugin</artifactId>
+            <version>1.5</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -95,6 +101,48 @@
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <version>1.5</version>
+
+                <dependencies>
+                    <!-- specify the dependent jdbc driver here -->
+                    <dependency>
+                        <groupId>postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>9.1-901-1.jdbc4</version>
+                    </dependency>
+                </dependencies>
+
+                <!-- common configuration shared by all executions -->
+                <configuration>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>jdbc:postgresql://localhost:5432/Xotic</url>
+                    <username>postgres</username>
+                    <password>postgres</password>
+                    <forceMojoExecution>true</forceMojoExecution>
+                     <autocommit>true</autocommit>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>full-init</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                           
+                            <basedir>src/main/resources/sql/</basedir> 
+                            <srcFiles>
+                                <srcFile>src/main/resources/sql/createData.sql</srcFile>
+                            </srcFiles>
                         </configuration>
                     </execution>
                 </executions>

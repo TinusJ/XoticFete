@@ -19,6 +19,10 @@ public enum EntityAttribute {
      */
     GLOBAL,
     /**
+     * Will indicate it is related to mobile
+     */
+    MOBILE_ENTITY,
+    /**
      * Show on menu list
      */
     SHOW_ON_MENU;

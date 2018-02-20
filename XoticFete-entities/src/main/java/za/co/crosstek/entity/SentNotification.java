@@ -3,10 +3,10 @@ package za.co.crosstek.entity;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToOne; 
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity 
 public class SentNotification extends CoreEntity {
 
     @ManyToOne

@@ -2,18 +2,26 @@ package za.co.crosstek.entity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;  
+import za.co.crosstek.enums.EntityAttribute;
 
 @Entity
+@EntityAnotation(attributes = {EntityAttribute.REST}, label = "GeoLocation", icon = "fafa-map-marker")
 public class GeoLocation extends CoreEntity {
 
     @NotNull
+    @FieldAnotation(label = "Latitude")
     private Double latitude;
 
     @NotNull
+    @FieldAnotation(label = "Longitude")
     private Double longitude;
 
+    @FieldAnotation(label = "Accuracy")
     private Double accuracy;
 
+    @FieldAnotation(label = "Altidtude")
     private Double altitude;
 
     public Double getLatitude() {

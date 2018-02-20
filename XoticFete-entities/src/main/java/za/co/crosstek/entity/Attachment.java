@@ -3,21 +3,27 @@ package za.co.crosstek.entity;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import static javax.persistence.FetchType.LAZY;
-import javax.persistence.Lob;
+import javax.persistence.Lob; 
 import javax.validation.constraints.NotNull;
 import org.apache.commons.lang3.StringUtils;
+import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
+import za.co.crosstek.enums.EntityAttribute; 
 
 @Entity
-public class Attachment extends CoreEntity  {
+@EntityAnotation(attributes = {EntityAttribute.REST}, label = "Attachment", icon = "fa fa-paperclip")
+public class Attachment extends CoreEntity {
 
     @Basic(fetch = LAZY)
     @Lob
     private byte[] file;
 
     @NotNull
+    @FieldAnotation(label = "File Name")
     private String fileName;
 
-    private Integer fileSize;;
+    @FieldAnotation(label = "File Size")
+    private Integer fileSize;
 
     public Boolean getPdf() {
         Boolean isPdf = Boolean.FALSE;
@@ -27,8 +33,6 @@ public class Attachment extends CoreEntity  {
         }
         return isPdf;
     }
-
-
 
     public void setFile(byte[] file, String filename) {
         this.file = file;
@@ -56,11 +60,11 @@ public class Attachment extends CoreEntity  {
     }
 
     public void setFileName(String fileName) {
-        
+
         if (!StringUtils.isEmpty(fileName)) {
             fileName = fileName.replaceAll("[^a-zA-Z0-9.\\-\\\\(\\\\)\\s]", "_");
         }
-        
+
         this.fileName = fileName;
     }
 

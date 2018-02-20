@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
 import za.co.crosstek.enums.EntityAttribute;
+import za.co.crosstek.enums.FieldType; 
 
 @Entity
 @EntityAnotation(attributes = {EntityAttribute.REST}, label = "Special Review", icon = "fa fa-rating")
@@ -15,19 +17,24 @@ public class SpecialReview extends CoreEntity {
 
     @ManyToOne
     @NotNull
+    @FieldAnotation(label = "Special")
     private Special special;
 
     @ManyToOne
     @NotNull
+    @FieldAnotation(label = "Mobile User")
     private MobileUser mobileUser;
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Title")
     private String title;
 
     @Column(length = Short.MAX_VALUE)
+    @FieldAnotation(label = "Comment")
     private String comment;
 
+    @FieldAnotation(label = "Rating", type = FieldType.RATING)
     private Integer rating;
 
     public Special getSpecial() {

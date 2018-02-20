@@ -4,21 +4,30 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
+import za.co.crosstek.enums.EntityAttribute;
+import za.co.crosstek.enums.FieldExclusion;
+import za.co.crosstek.enums.FieldType;
 
 @Entity
+@EntityAnotation(attributes = {EntityAttribute.SHOW_ON_MENU, EntityAttribute.SINGLE_RECORD}, label = "Wallet", icon = "fa fa-google-wallet")
 public class Wallet extends CoreEntity {
 
+    @FieldAnotation(label = "Emails", exclusions = {FieldExclusion.EDITABLE, FieldExclusion.FORM})
     private Integer emailCount;
 
+    @FieldAnotation(label = "SMSse", exclusions = {FieldExclusion.EDITABLE, FieldExclusion.FORM})
     private Integer smsCount;
 
+    @FieldAnotation(label = "Notifcaitons", exclusions = {FieldExclusion.EDITABLE, FieldExclusion.FORM})
     private Integer notificationCount;
 
-    @Transient
+    @FieldAnotation(label = "QR CODE", exclusions = {FieldExclusion.EDITABLE, FieldExclusion.FORM}, type = FieldType.QRCODE)
     private String qrcode;
 
     @OneToMany(mappedBy = "wallet", cascade = CascadeType.REFRESH)
+    @FieldAnotation(label = "Top Ups")
     private List<TopUpItem> topups;
 
     public Integer getEmailCount() {

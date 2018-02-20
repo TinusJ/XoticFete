@@ -7,32 +7,43 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import za.co.crosstek.anot.EntityAnotation;
+import za.co.crosstek.anot.FieldAnotation;
+import za.co.crosstek.enums.EntityAttribute;
+import za.co.crosstek.enums.FieldExclusion;
 import za.co.crosstek.enums.TopUpType;
 
 @Entity
+@EntityAnotation(label = "Top Up", icon = "fa fa-credit-card")
 public class TopUpItem extends CoreEntity {
 
     @ManyToOne
     @NotNull
+    @FieldAnotation(label = "Wallet")
     private Wallet wallet;
 
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Type")
     private TopUpType type;
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Ammount")
     private Integer ammount;
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Total Cost")
     private Double totalCost;
 
+    @FieldAnotation(label = "Promotional")
     private Boolean promotional;
 
     @NotNull
     @Column(nullable = false)
+    @FieldAnotation(label = "Purchase UUID", exclusions = {FieldExclusion.EDITABLE, FieldExclusion.FORM})
     private UUID purchaseUUID;
 
     public Wallet getWallet() {

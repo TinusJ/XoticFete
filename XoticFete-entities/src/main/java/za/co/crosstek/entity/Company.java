@@ -6,32 +6,47 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import za.co.crosstek.anot.EntityAnotation; 
+import za.co.crosstek.anot.FieldAnotation; 
+import za.co.crosstek.enums.EntityAttribute;
 
 /**
  *
  * @author Tinus
  */
 @Entity
+@EntityAnotation(attributes = {EntityAttribute.SHOW_ON_MENU, EntityAttribute.SINGLE_RECORD, EntityAttribute.REST}, label = "Company", icon = "fa fa-building")
 public class Company extends CoreEntity {
 
     @NotNull
+    @FieldAnotation(label = "Company Name")
     private String companyName;
 
     @NotNull
+    @FieldAnotation(label = "Registered Name")
     private String registeredName;
 
+    @FieldAnotation(label = "Registration Number")
     private String registrationNo;
 
-    @Pattern(regexp = "^(http|https|ftp)://.*$", message = "Website URL must start with 'http://' or 'https://'")
+    @Pattern(regexp = "^(http|https)://.*$", message = "Website URL must start with 'http://' or 'https://'")
+    @FieldAnotation(label = "Website")
     private String website;
 
     @OneToOne(cascade = CascadeType.REFRESH)
+    @FieldAnotation(label = "Preference")
     private Preference preference;
 
     @OneToOne(cascade = CascadeType.REFRESH)
+    @FieldAnotation(label = "Wallet")
+    private Wallet wallet;
+
+    @OneToOne(cascade = CascadeType.REFRESH)
     @NotNull
+    @FieldAnotation(label = "Location")
     private GeoLocation location;
 
+    @FieldAnotation(label = "Logo")
     @OneToOne(fetch = FetchType.LAZY)
     private Attachment logo;
 
@@ -89,6 +104,14 @@ public class Company extends CoreEntity {
 
     public void setLogo(Attachment logo) {
         this.logo = logo;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     @Override
