@@ -141,7 +141,7 @@
                            
                             <basedir>src/main/resources/sql/</basedir> 
                             <srcFiles>
-                                <srcFile>src/main/resources/sql/createData.sql</srcFile>
+                                <srcFile>src/main/webapp/resources/sql/createData.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
