@@ -106,13 +106,13 @@
                 </executions>
             </plugin>
 			
-            <plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sql-maven-plugin</artifactId>
                 <version>1.5</version>
 
                 <dependencies>
-                    <!-- specify the dependent jdbc driver here -->
+                     specify the dependent jdbc driver here 
                     <dependency>
                         <groupId>postgresql</groupId>
                         <artifactId>postgresql</artifactId>
@@ -120,7 +120,7 @@
                     </dependency>
                 </dependencies>
 
-                <!-- common configuration shared by all executions -->
+                 common configuration shared by all executions 
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
                     <url>jdbc:postgresql://localhost:5432/Xotic</url>
@@ -146,7 +146,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
