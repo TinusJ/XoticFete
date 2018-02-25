@@ -82,7 +82,7 @@ public class ListRenderer {
             Set<Field> fields = coreReflector.getFieldsForType(clazz, FieldExclusion.LIST);
 
             for (Field field : fields) {
-                columns.add(new ColumnModel(field.getAnnotation(FieldAnotation.class).label(), field.getName()));
+                columns.add(new ColumnModel(field.getAnnotation(FieldAnotation.class).label(), field.getName(), field.getAnnotation(FieldAnotation.class).type()));
             }
         } catch (Exception e) {
             LOG.error("Could not build columns", e);

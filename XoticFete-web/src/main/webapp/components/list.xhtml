@@ -3,9 +3,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
+                xmlns:crs="http://crosstek.io/facelets"
                 template="/WEB-INF/templates/template.xhtml">
-
-
     <ui:define name="content">
         <f:metadata>
             <f:viewParam name="e" value="#{listBean.e}" required="true"/>
@@ -14,15 +13,16 @@
 
         <div class="ui-g">
             <div class="ui-g-12">
-                <div class="card">
-                    <h1 class="panelGridCenter">#{listBean.e} List</h1>
-
-                    <p:dataTable id="lst" var="lst" value="#{listBean.list}" widgetVar="lstTable" filteredValue="#{listBean.filteredList}">                    
-                        <p:columns value="#{listBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{lst[column.property]}" filterBy="#{lst[column.property]}">
+                <div class="card card-w-title">
+                    <h1><i class="#{listBean.getIcon()}" aria-hidden="true"></i> #{listBean.getLabel()} List</h1>
+                    <p:dataTable id="lst" var="lst" value="#{listBean.list}" widgetVar="lstTable" >                    
+                        <p:columns value="#{listBean.columns}" var="column" columnIndexVar="colIndex" sortBy="#{lst[column.property]}" >
                             <f:facet name="header">
                                 <h:outputText value="#{column.header}" />
                             </f:facet>
-                            <h:outputText value="#{lst[column.property]}" />
+                            <h:outputText  />
+
+                            <crs:field  type="#{column.fieldType == 'AUTO' ? 'TEXT' : column.fieldType }" value="#{lst[column.property]}" rendered="true" inputField="false"/>
                         </p:columns>
                     </p:dataTable>
                 </div>

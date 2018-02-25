@@ -106,13 +106,12 @@
                 </executions>
             </plugin>
 			
-<!--            <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sql-maven-plugin</artifactId>
                 <version>1.5</version>
 
                 <dependencies>
-                     specify the dependent jdbc driver here 
                     <dependency>
                         <groupId>postgresql</groupId>
                         <artifactId>postgresql</artifactId>
@@ -120,14 +119,13 @@
                     </dependency>
                 </dependencies>
 
-                 common configuration shared by all executions 
                 <configuration>
                     <driver>org.postgresql.Driver</driver>
                     <url>jdbc:postgresql://localhost:5432/Xotic</url>
                     <username>postgres</username>
                     <password>postgres</password>
                     <forceMojoExecution>true</forceMojoExecution>
-                     <autocommit>true</autocommit>
+                    <autocommit>true</autocommit>
                 </configuration>
 
                 <executions>
@@ -141,12 +139,12 @@
                            
                             <basedir>src/main/resources/sql/</basedir> 
                             <srcFiles>
-                                <srcFile>src/main/webapp/resources/sql/createData.sql</srcFile>
+                                    <srcFile>src/main/webapp/resources/sql/createData.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

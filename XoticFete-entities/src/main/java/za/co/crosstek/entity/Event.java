@@ -51,7 +51,7 @@ public class Event extends CoreEntity {
     private Date endDate;
 
     @Column(nullable = false)
-    @FieldAnotation(label = "Entrance Fee")
+    @FieldAnotation(label = "Entrance Fee", type = FieldType.CURRENCY)
     private Double entranceFee;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -6,8 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne; 
-import javax.persistence.MappedSuperclass; 
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -29,6 +29,9 @@ public abstract class CoreEntity implements Serializable {
     @NotNull
     @Column(nullable = false)
     private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastUpdated;
 
     @ManyToOne
     private Company company;
@@ -55,6 +58,14 @@ public abstract class CoreEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     @Override
